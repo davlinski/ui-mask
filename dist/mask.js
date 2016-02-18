@@ -188,7 +188,7 @@ angular.module('ui.mask', [])
                                 iAttrs.$observe('uiMaskPlaceholderChar', initPlaceholderChar);
                             }
 
-                            controller.$formatters.push(formatter);
+                            controller.$formatters.unshift(formatter);
                             controller.$parsers.unshift(parser);
 
                             function uninitialize() {
@@ -534,7 +534,7 @@ angular.module('ui.mask', [])
                                 oldSelectionLength = getSelectionLength(this);
 
                                 // These events don't require any action
-                                if (isSelection || (isSelected && (eventType === 'click' || eventType === 'keyup'))) {
+                                if (isSelection || (isSelected && (eventType === 'click' || eventType === 'keyup' || eventType === 'focus'))) {
                                     return;
                                 }
 
